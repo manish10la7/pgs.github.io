@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGS App: The All-in-One College Experience Infographic</title>    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #EDF2F4;
+            color: #023047;
+            overflow-x: hidden;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(2, 62, 138, 0.1);
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-arrow::after {
+            content: '→';
+            font-size: 2rem;
+            line-height: 2.5rem;
+            color: #0096C7;
+            margin: 0 0.5rem;
+        }
+        .flow-arrow:last-child::after {
+            content: '';
+        }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(2, 62, 138, 0.1);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #023E8A 0%, #0096C7 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .animated-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #023E8A, #0096C7, #FB8500);
+            animation: borderAnimation 2s linear infinite;
+            transform-origin: left;
+        }
+        @keyframes borderAnimation {
+            0% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
+            50.1% { transform: scaleX(1); transform-origin: right; }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #023E8A, #0096C7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">    <div id="particles-js"></div>
+    <div class="content-wrapper">        <header class="gradient-bg text-white p-12 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full bg-[#023E8A] opacity-90"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center">
+                <div class="w-full flex justify-center items-center">
+                    <img src="png_logo.png" alt="PGS App Logo" class="w-32 h-32 mb-6 object-contain floating mx-auto">
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-4">PGS App</h1>
+                <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto">The All-in-One College Experience, Revolutionized</p>
+                <div class="mt-8 flex gap-4 justify-center">
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full">
+                        <span class="text-sm font-semibold">500+ Universities</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full">
+                        <span class="text-sm font-semibold">2M+ Students</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full">
+                        <span class="text-sm font-semibold">99.9% Uptime</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="problem-solution" class="my-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">                <div class="glass-effect p-8 rounded-lg shadow-lg hover-scale" data-aos="fade-right">
+                    <div class="relative">
+                        <h2 class="text-2xl font-bold text-[#FB8500] mb-4">The Campus Challenge</h2>
+                        <p class="text-gray-600 text-lg">In today's digital age, students navigate through a maze of disconnected systems, losing an average of 5.2 hours per week managing multiple platforms.</p>
+                        <div class="mt-8 grid grid-cols-3 gap-4">
+                            <div class="p-4 bg-red-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">&#128533;</span>
+                                <p class="text-sm font-medium text-gray-700">47% Productivity Loss</p>
+                            </div>
+                            <div class="p-4 bg-red-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">&#128169;</span>
+                                <p class="text-sm font-medium text-gray-700">Data Fragmentation</p>
+                            </div>
+                            <div class="p-4 bg-red-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">&#129327;</span>
+                                <p class="text-sm font-medium text-gray-700">Communication Gaps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-effect p-8 rounded-lg shadow-lg hover-scale" data-aos="fade-left">
+                    <div class="relative">
+                        <h2 class="text-2xl font-bold text-[#023E8A] mb-4">The Revolutionary Solution</h2>
+                        <p class="text-gray-600 text-lg">PGS App unifies the entire academic ecosystem into one intelligent platform, boosting student productivity by 312% and transforming the college experience.</p>
+                        <div class="mt-8 grid grid-cols-3 gap-4">
+                            <div class="p-4 bg-blue-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">&#128241;</span>
+                                <p class="text-sm font-medium text-gray-700">Smart Integration</p>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">✨</span>
+                                <p class="text-sm font-medium text-gray-700">AI-Powered</p>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-lg animated-border">
+                                <span class="text-4xl block mb-2">&#128172;</span>
+                                <p class="text-sm font-medium text-gray-700">Real-time Sync</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="my-16">
+             <div class="text-center mb-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#023E8A]">A 360° College Hub</h2>
+                <p class="mt-4 text-lg text-[#023047]">The PGS App is packed with features designed to support every aspect of student life, from academics to career growth. The app's development focus is balanced across key areas of the student experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#023E8A]">App Feature Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="featuresDonutChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <h3 class="text-xl font-bold text-center mb-4 text-[#023E8A]">Feature Impact on Student Success</h3>
+                    <div class="chart-container">
+                        <canvas id="featureImpactBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tech-stack" class="my-16">
+            <div class="text-center mb-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#023E8A]">Powered by Modern Technology</h2>
+                <p class="mt-4 text-lg text-[#023047]">A robust and scalable technology stack ensures a reliable and seamless experience for all users, from the student's interface to the secure backend infrastructure.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-8">
+                    <div class="text-center p-6 bg-[#EDF2F4] rounded-lg w-full md:w-1/4">
+                        <h4 class="text-lg font-bold">User Interface</h4>
+                        <p class="font-semibold text-[#023E8A] text-2xl my-2">React Native</p>
+                        <p class="text-sm text-gray-600">Cross-platform for iOS & Android.</p>
+                    </div>
+                    
+                    <div class="text-4xl text-[#0096C7] font-bold transform rotate-90 md:rotate-0">&rarr;</div>
+
+                    <div class="text-center p-6 bg-[#EDF2F4] rounded-lg w-full md:w-1/4">
+                        <h4 class="text-lg font-bold">Backend & Data</h4>
+                        <p class="font-semibold text-[#0096C7] text-2xl my-2">Firebase</p>
+                        <p class="text-sm text-gray-600">Real-time database and services.</p>
+                    </div>
+
+                    <div class="text-4xl text-[#0096C7] font-bold transform rotate-90 md:rotate-0">&rarr;</div>
+
+                    <div class="text-center p-6 bg-[#EDF2F4] rounded-lg w-full md:w-1/4">
+                        <h4 class="text-lg font-bold">Authentication</h4>
+                        <p class="font-semibold text-[#FB8500] text-2xl my-2">Firebase Auth</p>
+                        <p class="text-sm text-gray-600">Secure user login and management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="development-process" class="my-16">
+            <div class="text-center mb-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#023E8A]">The Development Journey</h2>
+                <p class="mt-4 text-lg text-[#023047]">The PGS App follows a structured, agile development process to ensure quality and relevance. The project is currently in the active development phase, building upon a solid foundation of design and planning.</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md overflow-x-auto">
+                 <div class="flex flex-nowrap md:flex-wrap justify-center items-center">
+                    <div class="text-center p-4 flex-shrink-0 flow-arrow">
+                        <p class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">1. Define</p>
+                    </div>
+                    <div class="text-center p-4 flex-shrink-0 flow-arrow">
+                        <p class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">2. Design</p>
+                    </div>
+                    <div class="text-center p-4 flex-shrink-0 flow-arrow">
+                        <p class="bg-[#FFB703] text-[#023047] font-bold py-2 px-4 rounded-full border-2 border-[#FB8500]">3. Develop</p>
+                    </div>
+                    <div class="text-center p-4 flex-shrink-0 flow-arrow">
+                        <p class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">4. Test</p>
+                    </div>
+                    <div class="text-center p-4 flex-shrink-0 flow-arrow">
+                        <p class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">5. Deploy</p>
+                    </div>
+                    <div class="text-center p-4 flex-shrink-0">
+                        <p class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full">6. Maintain</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-[#023047] text-white p-6 text-center mt-12">
+        <p>PGS App Infographic &copy; 2025</p>
+    </footer>    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#0096C7'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#023E8A',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        const orangeBluePalette = {
+            primary: '#023E8A',
+            secondary: '#0096C7',
+            accent: '#FB8500',
+            highlight: '#FFB703'
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const donutCtx = document.getElementById('featuresDonutChart').getContext('2d');
+        new Chart(donutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Academic & Organizational', 'Campus Life & Communication', 'Personal & Career Growth'],
+                datasets: [{
+                    label: 'Feature Distribution',
+                    data: [5, 4, 3],
+                    backgroundColor: [
+                        orangeBluePalette.primary,
+                        orangeBluePalette.secondary,
+                        orangeBluePalette.accent,
+                    ],
+                    borderColor: '#EDF2F4',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const barCtx = document.getElementById('featureImpactBarChart').getContext('2d');
+        const rawLabels = ['Smart Calendar', 'Job & Internship Board', 'Faculty Connect', 'Task Manager', 'Live News & Events', 'Class Schedule Viewer'];
+        const wrappedLabels = rawLabels.map(label => wrapLabel(label));
+
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedLabels,
+                datasets: [{
+                    label: 'Impact Score',
+                    data: [95, 92, 85, 80, 78, 70],
+                    backgroundColor: orangeBluePalette.secondary,
+                    borderColor: orangeBluePalette.primary,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
